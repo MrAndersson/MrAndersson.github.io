@@ -1,0 +1,89 @@
+body
+{
+    background: #000;
+}
+p
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+#helloworld
+{
+    color: red;
+}
+
+#pi
+{
+    color: gold;
+}
+
+#randNum
+{
+    color: yellow;
+}
+
+#TxT
+{
+    color:greenyellow;
+    font-size: 1000%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+img
+{
+    position: fixed;
+    outline: #00BCFF solid 5px;
+}
+
+#myImg
+{
+    top: 25%;
+    left: 25%;
+    transform: translate(-25%, -25%);
+    animation: 2s rotateRight infinite linear;
+}
+
+#overlay
+{
+    top: 75%;
+    left: 75%;
+    transform: translate(-75%, -75%);
+
+    padding:10px;
+    position:absolute;
+    background: #000;
+    opacity:0.5;    /* -> transparency 50% */
+    height:80px;    /* -> image_height - padding */
+    width:80px;     /* -> image_width - padding */
+    z-index:1;      /* -> put overlay over image */
+}
+
+#myDog
+{
+    top: 75%;
+    left: 75%;
+    transform: translate(-75%, -75%);
+}
+
+.myHydra
+{
+    top: 85%;
+    left: 50%;
+    transform: translate(-85%, -50%);
+}
+.myHydra:hover
+{
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+@keyframes rotateRight
+{
+    0%{ transform:rotate(0deg); transform-origin:50% 50%; }
+    100%{ transform:rotate(360deg); }
+}
