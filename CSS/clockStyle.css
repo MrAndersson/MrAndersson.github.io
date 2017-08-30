@@ -82,6 +82,19 @@ img
     filter: invert(100%);
 }
 
+.container
+{
+    width: 989px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+html, body
+{
+    padding: 0;
+    margin: 0;
+}
+
 @keyframes rotateRight
 {
     0%{ transform:rotate(0deg); transform-origin:50% 50%; }
