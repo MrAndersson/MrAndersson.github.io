@@ -104,11 +104,12 @@ nav ul
 }
 a:link
 {
-    color: white;
+    color: grey;
 }
 a:hover
 {
-    color: grey;
+    color: white;
+    font-size: 150%;
 }
 
 @keyframes rotateRight
