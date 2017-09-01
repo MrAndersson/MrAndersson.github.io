@@ -1,7 +1,24 @@
 "use strict";
 
-/*var toggleButton = $("#toggleButton");
-toggleButton.on("click", togglePI() {});*/
+//var pi = $("#pi");
+//pi.text(Math.PI);
+
+var toggleButton = $("#toggleButton");
+toggleButton.on("click", function() 
+{
+    var pi = $("#pi");
+
+    if(toggleButton.text() === "Show PI!")
+    {
+        toggleButton.text("Hide PI!");
+        pi.text(Math.PI);
+    }
+    else
+    {
+        toggleButton.text("Show PI!");
+        pi.text("");
+    }
+});
 
 
 function warnMe()
@@ -37,24 +54,6 @@ function randomNumber()
     //document.getElementById('randNum').innerHTML = a;
     $("#randNum").text(a);
     var t = setTimeout(randomNumber, Math.round(a * 1000));
-}
-
-function togglePI()
-{
-    console.log("Toggle Pi!");
-
-    var piToggle = false;
-    if(!piToggle)
-    {
-        $("#pi").text(Math.PI);
-        //document.getElementById('pi').innerHTML = Math.PI;
-    }
-    else
-    {
-        $("#pi").text("");
-        //document.getElementById('pi').innerHTML = Math.PI;
-    }
-
 }
 
 function currentTime()
