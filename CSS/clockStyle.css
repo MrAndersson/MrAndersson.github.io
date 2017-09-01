@@ -70,6 +70,13 @@ img
     transform: translate(-75%, -75%);
 }
 
+#randomList
+{
+    color: white;
+    position:absolute;
+    top: 65%;
+}
+
 .myHydra
 {
     top: 85%;

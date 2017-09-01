@@ -3,25 +3,59 @@
 /// Makes sure the DOM is ready before start to load functions
 $(document).ready(function()
 {
-var toggleButton = $("#toggleButton");
-toggleButton.on("click", function() 
-{
-    var pi = $("#pi");
-
-    if(toggleButton.text() === "Show PI!")
+    var toggleButton = $("#toggleButton");
+    toggleButton.on("click", function() 
     {
-        toggleButton.text("Hide PI!");
-        pi.text(Math.PI);
-    }
-    else
+        var pi = $("#pi");
+
+        if(toggleButton.text() === "Show PI!")
+        {
+            toggleButton.text("Hide PI!");
+            pi.text(Math.PI);
+        }
+        else
+        {
+            toggleButton.text("Show PI!");
+            pi.text("");
+        }
+    });
+
+    var results = [];
+    
+    /// New cool object
+    function person(ID, occupation, human)
     {
-        toggleButton.text("Show PI!");
-        pi.text("");
+        this.id = ID;
+        this.occupation = occupation;
+        this.human = human;
     }
-});
+    
+    var blorf1 = new person(6666666, "Demon", false);
+    var blorf2 = new person(2222222, "Paladin", true);
+    
+    results.push(blorf1); results.push(blorf2);
+    var resultList = $("#randomList");
+    resultList.empty();
+    
+    $.each(results, function(i, item)
+    {
+        var textResult = $(`<div class='result'>
+                            <div class='title'>ID: ${item.id} </div>
+                            <div>Occupation: ${item.occupation} </div>
+                            <div>Human: ${item.human} </div>
+                            </div>`);
 
-$("")
+        textResult.hover(function()
+        {
+            $(this).css("background-color", "lightblue");
+        }, 
+        function()
+        {
+            $(this).css("background-color", "transparent");
+        });
 
+        resultList.append(textResult);
+    });
 });
 
 function warnMe()
