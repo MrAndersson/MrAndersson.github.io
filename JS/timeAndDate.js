@@ -1,5 +1,3 @@
-
-"use strict";
 function warnMe()
 {
     alert("ZugZug Booga")
@@ -7,8 +5,8 @@ function warnMe()
 
 function genRandomColor()
 {
-    return (`rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`);
-};
+    return (`rgb( ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`);
+}
 
 function changeOverlayColor()
 {
@@ -49,7 +47,7 @@ function currentTime()
     s = checkTime(today.getSeconds());
 
     // Fetch an portion of the HTML script by ID
-    document.getElementById('TxT').innerHTML = h + ":" + m + ":" + s;
+    document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
     // The setTimeout() method calls a function or evaluates an expression after a specified number of milliseconds.
     var t = setTimeout(currentTime, 500);
 };
