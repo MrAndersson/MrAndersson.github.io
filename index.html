@@ -3,7 +3,7 @@
 
 	<head>
 		<title>This is my First Page!</title>
-
+		<script src="JS/jquery-3.2.1.min.js"></script>
 		<script src="JS/timeAndDate.js"></script>
 		<link rel="stylesheet" href="CSS/clockStyle.css"></style>
 	</head>
@@ -11,7 +11,7 @@
 	<body onload="currentTime(); randomNumber(); changeOverlayColor(); changeBackgroundColor()">
 		<div class="container">
 			<input type="button" value="Warn Me!" onclick="warnMe()"><br>
-			<input type="button" value="Show Pi!" onclick="showPi()"><br>
+			<button type="toggleButton" onclick="togglePI()">Toggle PI!</button><br>
 
 			<p id="helloworld">Hello World!</p>
 			<p id="pi"/>
