@@ -1,20 +1,25 @@
+
+"use strict";
 function warnMe()
 {
     alert("ZugZug Booga")
 }
 
+function genRandomColor()
+{
+    return (`rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`);
+};
+
 function changeOverlayColor()
-{      
-    var color = "rgb(" + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ", "+ Math.floor(Math.random() * 256) + ")";
-    document.getElementById('overlay').style.background = color;
+{
+    document.getElementById('overlay').style.background = this.genRandomColor();
 
     var t = setTimeout(changeOverlayColor, Math.round(Math.random() * 500));
 }
 
 function changeBackgroundColor()
-{      
-    var color = "rgb(" + Math.floor(Math.random() * 256) + ", " + Math.floor(Math.random() * 256) + ", "+ Math.floor(Math.random() * 256) + ")";
-    //document.body.style.background = color;
+{
+    //document.body.style.background = this.genRandomColor();
 
     var t = setTimeout(changeBackgroundColor, Math.round(Math.random() * 1000));
 }
