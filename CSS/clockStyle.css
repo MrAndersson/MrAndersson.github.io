@@ -89,10 +89,26 @@ img
     padding: 5px;
 }
 
-html, body
+html, body, nav ul
 {
     padding: 0;
     margin: 0;
+}
+
+nav ul
+{
+    position: fixed;
+    left: 80%;
+    color: white;
+    font-size: 200%;
+}
+a:link
+{
+    color: white;
+}
+a:hover
+{
+    color: grey;
 }
 
 @keyframes rotateRight

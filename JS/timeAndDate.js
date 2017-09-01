@@ -1,8 +1,8 @@
 "use strict";
 
-//var pi = $("#pi");
-//pi.text(Math.PI);
-
+/// Makes sure the DOM is ready before start to load functions
+$(document).ready(function()
+{
 var toggleButton = $("#toggleButton");
 toggleButton.on("click", function() 
 {
@@ -20,6 +20,9 @@ toggleButton.on("click", function()
     }
 });
 
+$("")
+
+});
 
 function warnMe()
 {
