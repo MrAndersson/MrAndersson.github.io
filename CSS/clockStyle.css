@@ -73,8 +73,23 @@ img
 #randomList
 {
     color: white;
-    position:absolute;
+    position: absolute;
     top: 65%;
+}
+
+#callbackButton
+{
+    top: 30%;
+    left: 70%;
+    position: fixed;
+}
+
+#callbackText
+{
+    color:#4000FF;
+    position: fixed;
+    top: 30%;
+    left: 63%;
 }
 
 .myHydra

@@ -30,8 +30,8 @@ $(document).ready(function()
         this.human = human;
     }
     
-    var blorf1 = new person(6666666, "Demon", false);
-    var blorf2 = new person(2222222, "Paladin", true);
+    var blorf1 = new person("66 666 66", "Demon", false);
+    var blorf2 = new person("22 222 22", "Paladin", true);
     
     results.push(blorf1); results.push(blorf2);
     var resultList = $("#randomList");
@@ -54,9 +54,20 @@ $(document).ready(function()
             $(this).css("background-color", "transparent");
         });
 
+        $(textResult).css({"border-color": "#D3D3D3", "border-width":"1px", "border-style":"solid"});
+
         resultList.append(textResult);
     });
+
+    var callbackButton = $("#callbackButton");
+    callbackButton.on("click", function()
+    {print($("#callbackText"), "Booga Booga")});
 });
+
+function print(HTMLPageID, text)
+{
+    $(HTMLPageID).text(`${text}, this is a callback function`);
+}
 
 function warnMe()
 {
