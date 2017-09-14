@@ -32,6 +32,7 @@ $(document).ready(function()
     
     var blorf1 = new person("66 666 66", "Demon", false);
     var blorf2 = new person("22 222 22", "Paladin", true);
+    var blorf2 = new person("00 111 00", "Druid", false);
     
     results.push(blorf1); results.push(blorf2);
     var resultList = $("#randomList");
