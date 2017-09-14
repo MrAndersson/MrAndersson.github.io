@@ -1,6 +1,6 @@
 "use strict";
 
-/// Makes sure the DOM is ready before start to load functions
+/// Makes sure the DOM is ready before start to load functions, jQuery
 $(document).ready(function()
 {
     var toggleButton = $("#toggleButton");
@@ -70,61 +70,80 @@ function print(HTMLPageID, text)
     $(HTMLPageID).text(`${text}, this is a callback function`);
 }
 
-function warnMe()
+(function()
 {
-    alert("ZugZug Booga")
-}
+    var app = angular.module('myApp', []);
 
-function genRandomColor()
-{
-    var rgb = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-    return rgb;
-}
+    /////////////////
+    //  Functions  //
+    /////////////////
 
-function changeOverlayColor()
-{
-    document.getElementById('overlay').style.background = genRandomColor();
-    //$("#overlay").style.background = genRandomColor();
-
-    var t = setTimeout(changeOverlayColor, Math.round(Math.random() * 500));
-}
-
-function changeBackgroundColor()
-{
-    //document.body.style.background = this.genRandomColor();
-    //$("#body").style.background = this.genRandomColor();
-
-    var t = setTimeout(changeBackgroundColor, Math.round(Math.random() * 1000));
-}
-
-function randomNumber()
-{
-    var a = Math.random();
-    //document.getElementById('randNum').innerHTML = a;
-    $("#randNum").text(a);
-    var t = setTimeout(randomNumber, Math.round(a * 1000));
-}
-
-function currentTime()
-{
-    var today = new Date();
-    var h = checkTime(today.getHours());
-    var m = checkTime(today.getMinutes());
-    var s = checkTime(today.getSeconds());
-
-    // Fetch an portion of the HTML script by ID
-    //document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
-    var clock = $("#clock");
-    clock.text(`${h}:${m}:${s}`);
-    // The setTimeout() method calls a function or evaluates an expression after a specified number of milliseconds.
-    var t = setTimeout(currentTime, 500);
-};
-
-function checkTime(i)
-{
-    if(i < 10)
+    function MainCtrl($scope)
     {
-        i = `0${i}`
+        $scope.helloworld = "Hello World!";
     }
-    return i;
-};
+
+    function RandomNumberCtrl()
+    {
+        var a = Math.random();
+        return a;
+    }
+
+    function TimeCtrl()
+    {
+        var today = new Date();
+        var h = checkTime(today.getHours());
+        var m = checkTime(today.getMinutes());
+        var s = checkTime(today.getSeconds());
+    
+        // Fetch an portion of the HTML script by ID
+        return (`${h}:${m}:${s}`);
+    };
+
+    function checkTime(i)
+    {
+        if(i < 10)
+        {
+            i = `0${i}`
+        }
+        return i;
+    };
+
+    function RandomColorCtrl()
+    {
+        var rgb = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+        return rgb;
+    }
+    
+    function changeOverlayColor()
+    {
+        document.getElementById('overlay').style.background = RandomColorCtrl();
+    }
+
+    function RandomNumerForTime(multiplyer = 1)
+    {
+       return (Math.round(Math.random() * 500));
+    };
+
+    /////////////////
+    // Controllers //
+    /////////////////
+
+    //app.controller(Define func, Which func to use);
+    app.controller('MainCtrl', ["$scope", MainCtrl]);
+    app.controller('RandomNumberCtrl', function($scope, $interval)
+    {
+        $scope.randNum = RandomNumberCtrl();
+        $interval(function(){$scope.randNum = RandomNumberCtrl()}, RandomNumerForTime());
+    });
+    app.controller('TimeCtrl', function($scope, $interval)
+    {
+        $scope.clock = TimeCtrl()
+        $interval(function(){$scope.clock = TimeCtrl()}, 500);
+    });
+    app.controller('RandomColorCtrl', function($scope, $interval)
+    {
+        changeOverlayColor();
+        $interval(function(){changeOverlayColor()}, RandomNumerForTime(500));
+    });
+}());
