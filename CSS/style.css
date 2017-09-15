@@ -49,14 +49,19 @@ img
     animation: 2s rotateRight infinite linear;
 }
 
+#toggleButton
+{
+    position: absolute;
+}
+
 #overlay
 {
     top: 75%;
     left: 75%;
     transform: translate(-75%, -75%);
 
-    padding:10px;
-    position:absolute;
+    padding: 10px;
+    position: absolute;
     background: #000;
     opacity:0.5;    /* -> transparency 50% */
     height:80px;    /* -> image_height - padding */

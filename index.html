@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 
-	<head>
-		<title>This is my First Page!</title>
-		<link rel="stylesheet" href="CSS/style.css"></style>
-		<script src="JS/angular.js"></script>
-		<script src="JS/jquery-3.2.1.min.js"></script>
-	</head>
-	
-	<body onload="changeBackgroundColor()">
+<head>
+	<title>This is my First Page!</title>
+	<link rel="stylesheet" href="CSS/style.css">
+	</style>
+	<script src="JS/angular.js"></script>
+	<script src="JS/jquery-3.2.1.min.js"></script>
+</head>
 
-		<div class="container">
-			<input type="button" value="Warn Me!" onclick="warnMe()"><br>
-			<button id="toggleButton">Show PI!</button><br>
+<body>
 
-			<nav>
-				<ul>
-					<li>
-						<a href="http://google.com" target="_blank">Google</a>
-					</li>
-					<li>
-						<a href="http://youtube.com" target="_blank">Youtube</a>
-					</li>
-					<li>
-						<a href="http://soundcloud.com" target="_blank">Soundcloud</a>
-					</li>
-				</ul>
-			</nav>
+	<div class="container">
 
-			<div ng-controller="MainCtrl">
-				<p id="helloworld">{{helloworld}}</p>
-			</div>
+		<nav>
+			<ul>
+				<li>
+					<a href="http://google.com" target="_blank">Google</a>
+				</li>
+				<li>
+					<a href="http://youtube.com" target="_blank">Youtube</a>
+				</li>
+				<li>
+					<a href="http://soundcloud.com" target="_blank">Soundcloud</a>
+				</li>
+			</ul>
+		</nav>
 
-			<p id="pi"/>
-			<p id="randNum" ng-controller="RandomNumberCtrl">{{randNum}}</p>
+		<div ng-controller="MainCtrl">
+			<p id="helloworld">{{helloworld}}</p>
+		</div>
 
-			<div id="randomList"> This is where the result list will be!
-			</div>
+		<div ng-controller="TogglePI">
+			<p id="pi" ng-show="show">{{show}}</p>
+			<button id="toggleButton" ng-click="toggle()">Show PI!</button><br>
+		</div>
+		<p id="randNum" ng-controller="RandomNumberCtrl">{{randNum}}</p>
 
-			<button id="callbackButton">Callback Button</button><br>
-			<p id="callbackText">This is the Callback text</p>
+		<div id="randomList"> This is where the result list will be!
+		</div>
 
-			<!--
+		<button id="callbackButton">Callback Button</button><br>
+		<p id="callbackText">This is the Callback text</p>
+
+		<!--
 			<div id="txt">TimerTimerTimer</div>
 			<button onclick="changeOverlayColor()">It's Disco time!</button>
-			-->
-			<div id="clock" ng-controller="TimeCtrl">{{clock}}</div>
+		-->
+		<div id="clock" ng-controller="TimeCtrl">{{clock}}</div>
+		<!--
+		<div ng-include="'imageControl.html'"></div>
+		-->
+		<img class="myHydra" src="Images/hydra.jpg" width="150" height="150">
+		<img id="myImg" src="Images/punsch.jpg" width="150" height="150">
 
-			<img class="myHydra" src="Images/hydra.jpg" width="150" height="150">
-			<img id="myImg" src="Images/punsch.jpg" width="150" height="150">
-		
-			<div id="overlay" ng-controller="RandomColorCtrl"></div>
-			<img id="myDog" src="Images/dog.jpg" width="100" height="100">
-		</div>
+		<div id="overlay" ng-controller="RandomColorCtrl"></div>
+		<img id="myDog" src="Images/dog.jpg" width="100" height="100">
 
 		<script src="JS/script.js"></script>
 
-	</body>
+</body>
 
 </html>
