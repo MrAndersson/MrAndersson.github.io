@@ -1,0 +1,66 @@
+[
+    {
+        "date": "2019-11-08 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY", 
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-11-12 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY", 
+        "fLink": "https://www.facebook.com/viktor.g.andersson.3",
+        "gLink": "https://goo.gl/forms/eS5R6UpghPHZtpZs2",
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-09-08 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "ALRESAY", 
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-11-09 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY", 
+        "fLink": "https://www.facebook.com/viktor.g.andersson.3", 
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-11-15 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY",
+        "fLink": "https://www.facebook.com/viktor.g.andersson.3", 
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-11-14 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY", 
+        "fLink": "https://www.facebook.com/viktor.g.andersson.3", 
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-11-13 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY", 
+        "fLink": "https://www.facebook.com/viktor.g.andersson.3",
+        "gLink": "https://goo.gl/forms/eS5R6UpghPHZtpZs2",
+        "info": "Hej bristol 4 lyf, m8!"
+    },
+    {
+        "date": "2019-11-16 18:34:30", 
+        "host": "HOST", 
+        "location": "STOCK", 
+        "name": "SUPER COOL BRISTOL PARTY", 
+        "info": "Hej bristol 4 lyf, m8!",
+        "gLink": "https://goo.gl/forms/eS5R6UpghPHZtpZs2"
+    }
+]
