@@ -382,12 +382,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_side_queue_side_queue_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/side-queue/side-queue.component */ "./src/app/components/side-queue/side-queue.component.ts");
 /* harmony import */ var _components_main_queue_main_queue_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/main-queue/main-queue.component */ "./src/app/components/main-queue/main-queue.component.ts");
 /* harmony import */ var _components_utils_title_bar_title_bar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/utils/title-bar/title-bar.component */ "./src/app/components/utils/title-bar/title-bar.component.ts");
+/* harmony import */ var _components_load_indicator_load_indicator_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/load-indicator/load-indicator.component */ "./src/app/components/load-indicator/load-indicator.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -420,7 +422,8 @@ var AppModule = /** @class */ (function () {
                 _components_home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
                 _components_side_queue_side_queue_component__WEBPACK_IMPORTED_MODULE_8__["SideQueueComponent"],
                 _components_main_queue_main_queue_component__WEBPACK_IMPORTED_MODULE_9__["MainQueueComponent"],
-                _components_utils_title_bar_title_bar_component__WEBPACK_IMPORTED_MODULE_10__["TitleBarComponent"]
+                _components_utils_title_bar_title_bar_component__WEBPACK_IMPORTED_MODULE_10__["TitleBarComponent"],
+                _components_load_indicator_load_indicator_component__WEBPACK_IMPORTED_MODULE_11__["LoadIndicatorComponent"]
             ],
             imports: [
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"].forRoot(),
@@ -451,7 +454,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"justify-content-md-center\" *ngIf=\"!main\">\r\n\t<h1>Loading ...</h1>\r\n</div>\r\n\r\n<div *ngIf=\"main\">\r\n\t<div class=\"container-fluid crimson-bg\" style=\"margin: 20px 0 30px 0;\">\r\n\t\t<div class=\"row justify-content-md-center\">\r\n\t\t\t<div class=\"col-md-5 col-lg-4 col-xl-3 d-none d-md-block\">\r\n\t\t\t\t<side-queue [queue]=\"queue\" [size]=\"'md'\"></side-queue>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-12 col-sm-8 col-md-7 col-lg-7 col-xl-5\">\r\n\t\t\t\t<main-queue [queue]=\"queue\"></main-queue>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t\r\n\t<!-- <div class=\"row fixed-bottom\">\r\n\t\t\t<div class=\"col-6 col-sm-6 col-md-6 col-lg-6 d-none d-md-block left-arrow-no-padding\">\r\n\t\t\t\t<div class=\"left-arrow margin-neg-right\" style=\"margin: 0 -106px 0 0\">\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-6 col-sm-6 col-md-6 col-lg-6 d-none d-md-block right-arrow-no-padding\" style=\"right: 0;\">\t\r\n\t\t\t\t<div class=\"right-arrow margin-neg-left\" style=\"margin: 0 0 0 -106px\">\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t</div> -->\r\n\t\r\n\t<!-- SMALL SCREENS -->\r\n\t\r\n\t<div class=\"container-fluid crimson-bg d-md-none\" style=\"margin: -45px 0 0 0;\">\r\n\t\t<div class=\"row justify-content-md-center\">\r\n\t\t\t<div class=\"col-12 col-sm-8\">\r\n\t\t\t\t<side-queue [queue]=\"queue\" [size]=\"'sm'\"></side-queue>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- <div class=\"row d-md-none\" style=\"margin: 40px 0 0 0;\">\r\n\t\t<div class=\"col-6 col-sm-6 col-md-6 col-lg-6 left-arrow-no-padding\">\r\n\t\t\t<div class=\"left-arrow\" style=\"margin: 0 -85px 0 0\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-6 col-sm-6 col-md-6 col-lg-6 right-arrow-no-padding\" style=\"right: 0;\">\t\r\n\t\t\t<div class=\"right-arrow\" style=\"margin: 0 0 0 -85px\">\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div> -->\r\n</div>\r\n\r\n\r\n"
+module.exports = "<div class=\"container crimson-bg h-100\">\r\n\t<div [ngClass]=\"!ready ? 'visible' : 'invisible'\">\r\n\t\t<load-indicator></load-indicator>\r\n\t</div>\r\n</div>\r\n<div [ngClass]=\"ready ? 'visible' : 'invisible'\">\r\n\t<div class=\"container-fluid crimson-bg\" style=\"margin: 20px 0 30px 0;\">\r\n\t\t<div class=\"row justify-content-md-center\">\r\n\t\t\t<div class=\"col-md-5 col-lg-4 col-xl-3 d-none d-md-block\">\r\n\t\t\t\t<!-- <div class=\"box\"> -->\r\n\t\t\t\t\t<side-queue [queue]=\"queue\" [size]=\"'md'\"></side-queue>\r\n\t\t\t\t<!-- </div> -->\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-12 col-sm-8 col-md-7 col-lg-7 col-xl-5\">\t\t\t\r\n\t\t\t\t<!-- <div class=\"box\"> -->\r\n\t\t\t\t\t<main-queue [queue]=\"queue\" (readyMainQueue)=\"readyHome($event)\"></main-queue>\r\n\t\t\t\t<!-- </div> -->\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<!-- SMALL SCREENS -->\r\n\t<div class=\"container-fluid crimson-bg d-md-none\" style=\"margin: -45px 0 0 0;\">\r\n\t\t<div class=\"row justify-content-md-center\">\r\n\t\t\t<div class=\"col-12 col-sm-8\">\r\n\t\t\t\t<side-queue [queue]=\"queue\" [size]=\"'sm'\"></side-queue>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -496,7 +499,7 @@ moment__WEBPACK_IMPORTED_MODULE_1__["locale"]('sv');
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(http) {
         this.http = http;
-        this.main = false;
+        this.ready = false;
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -515,9 +518,11 @@ var HomeComponent = /** @class */ (function () {
                 });
                 _this.queue = _this.sort();
             }
-            _this.main = true;
         });
         // console.log('Home', this);
+    };
+    HomeComponent.prototype.readyHome = function (bool) {
+        this.ready = bool;
     };
     HomeComponent.prototype.sort = function () {
         return this.queue.sort(function (a, b) { return moment__WEBPACK_IMPORTED_MODULE_1__(a.date).isBefore(moment__WEBPACK_IMPORTED_MODULE_1__(b.date)) ? -1 : 1; });
@@ -537,6 +542,69 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/load-indicator/load-indicator.component.html":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/load-indicator/load-indicator.component.html ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n\t<div class=\"spinner-center\">\n\t\t<div class=\"spinner-border text-danger\" style=\"width: 5rem; height: 5rem;\" role=\"status\">\n\t\t\t<span class=\"sr-only\">Loading...</span>\n\t\t</div>  \n\t</div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/load-indicator/load-indicator.component.less":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/load-indicator/load-indicator.component.less ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".spinner-placement {\n  display: inline-block;\n  vertical-align: text-bottom;\n}\n.spinner-placement .spinner {\n  width: 5rem;\n  height: 5rem;\n  border-left: 0.25em solid rgba(238, 21, 68, 0.85);\n  border-bottom: 0.25em solid #ffd302;\n  border-top: 0.25em solid #058ec7;\n  border-right-color: transparent;\n  border-radius: 50%;\n  -webkit-animation: spinner-border 0.75s linear infinite;\n  animation: spinner-border 0.75s linear infinite;\n}\n.spinner-center {\n  position: absolute;\n  margin: auto;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width: 100px;\n  height: 100px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/components/load-indicator/load-indicator.component.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/load-indicator/load-indicator.component.ts ***!
+  \***********************************************************************/
+/*! exports provided: LoadIndicatorComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadIndicatorComponent", function() { return LoadIndicatorComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LoadIndicatorComponent = /** @class */ (function () {
+    function LoadIndicatorComponent() {
+    }
+    LoadIndicatorComponent.prototype.ngOnInit = function () {
+    };
+    LoadIndicatorComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'load-indicator',
+            template: __webpack_require__(/*! ./load-indicator.component.html */ "./src/app/components/load-indicator/load-indicator.component.html"),
+            styles: [__webpack_require__(/*! ./load-indicator.component.less */ "./src/app/components/load-indicator/load-indicator.component.less")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LoadIndicatorComponent);
+    return LoadIndicatorComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/main-queue/main-queue.component.html":
 /*!*****************************************************************!*\
   !*** ./src/app/components/main-queue/main-queue.component.html ***!
@@ -544,7 +612,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-container box-shadow\">\n\t<div *ngIf=\"arr.length === 0\">\n\t\t<app-title-bar [text]=\"'Det var en tom event lista'\" \n\t\t\t[arrowLeft]=\"'left-arrow-green'\" \n\t\t\t[arrowRight]=\"'right-arrow-green'\"\n\t\t\t></app-title-bar>\n\t\t<span class=\"center-relative-to-parent\" style=\"margin: 0 0 30px 0;\">\n\t\t\t<i class=\"far fa-sad-cry\" style=\"font-size: 300px; color: #046b95;\"></i>\n\t\t</span>\n\t</div>\t\n\t<div *ngFor=\"let event of arr; let i = index\">\n\t\t<app-title-bar [text]=\"event.name\" \n\t\t\t\t\t   [arrowLeft]=\"'left-arrow-green'\" \n\t\t\t\t\t   [arrowRight]=\"'right-arrow-green'\"\n\t\t\t\t\t   ></app-title-bar>\n\t\t<h1 class=\"center-relative-to-parent\" style=\"margin: 5px 0 0 0\">\n\t\t<div [ngStyle]=\"{'color' : event.days === '00' ? '#87c82e' : 'white'}\">\n\t\t\t{{event.days}}\n\t\t\t<div class=\"center-relative-to-parent timer-text-size\">\n\t\t\t\tDay(s)\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"vl\"></div>\n\t\t<div [ngStyle]=\"{'color' : event.hours === '00' ? '#87c82e' : 'white'}\" style=\"width: 48\">\n\t\t\t{{event.hours}}\n\t\t\t<div class=\"center-relative-to-parent timer-text-size\">\n\t\t\t\tHour(s)\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"vl\"></div>\n\t\t<div [ngStyle]=\"{'color' : event.minutes === '00' ? '#87c82e' : 'white'}\" style=\"width: 48\">\n\t\t\t{{event.minutes}}\n\t\t\t<div class=\"center-relative-to-parent timer-text-size\">\n\t\t\t\tMinute(s)\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"vl\"></div>\n\t\t<div [ngStyle]=\"{'color' : event.seconds === '00' && event.minutes == '00' ? '#87c82e' : 'white'}\" style=\"width: 48\">\n\t\t\t{{event.seconds}}\n\t\t\t<div class=\"center-relative-to-parent timer-text-size\">\n\t\t\t\tSecond(s)\n\t\t\t</div>\n\t\t</div>\n\t\t</h1>\n\t\t<br>\n\t\t<div class=\"row\" style=\"margin: 0 0 0 0\">\n\t\t\t<div *ngIf=\"event.fLink\" class=\"social-background read-more\">\n\t\t\t\t<a (click)=\"onClick(toggle[i])\" data-toggle=\"collapse\" [attr.data-target]=\"'#main' + i\" class=\"fas fa-ellipsis-v\" style=\"color: rgb(6,160,224);\"></a>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"event.fLink\" class=\"social-background facebook read-more\">\n\t\t\t\t<a href=\"{{event.fLink}}\" target=\"_blank\" class=\"fab fa-facebook\"></a>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"event.gLink\" class=\"social-background google read-more\">\n\t\t\t\t<a href=\"{{event.gLink}}\" target=\"_blank\" class=\"fab fa-google\"></a>\n\t\t\t</div>\n\t\t\t{{collapse}}\n\t\t</div>\n\t\t<br>\n\t\t<div class=\"collapse\" [attr.id]=\"'main' + i\">\n\t\t\t<div class=\"center-relative-to-parent\">\n\t\t\t\t<h5><i class=\"far fa-calendar-alt\"></i> {{event.date}}</h5>\n\t\t\t</div>\n\t\t\t<br>\n\t\t\t<div class=\"center-relative-to-parent\">\n\t\t\t\t<h5><i class=\"fas fa-map-marker-alt\"></i> {{event.location}}</h5>\n\t\t\t</div>\n\t\t\t<br>\n\t\t\t<div class=\"center-relative-to-parent\">\n\t\t\t\t<h5><i class=\"fas fa-user\"></i> {{event.host}}</h5>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"main-container box\">\n\t<div *ngIf=\"arr.length === 0\">\n\t\t<app-title-bar [text]=\"'Det var en tom event lista'\" \n\t\t\t[arrowLeft]=\"'left-arrow-green'\" \n\t\t\t[arrowRight]=\"'right-arrow-green'\"\n\t\t\t></app-title-bar>\n\t\t<span class=\"center-relative-to-parent\" style=\"margin: 0 0 30px 0;\">\n\t\t\t<i class=\"far fa-sad-cry\" style=\"font-size: 300px; color: #046b95;\"></i>\n\t\t</span>\n\t</div>\t\n\t<div *ngFor=\"let event of arr; let i = index\">\n\t\t<app-title-bar [text]=\"event.name\" \n\t\t\t\t\t   [arrowLeft]=\"'left-arrow-green'\" \n\t\t\t\t\t   [arrowRight]=\"'right-arrow-green'\"\n\t\t\t\t\t   ></app-title-bar>\n\t\t<h1 class=\"center-relative-to-parent\" style=\"margin: 5px 0 0 0\">\n\t\t<div>\n\t\t\t<div class=\"center-relative-to-parent\" [ngStyle]=\"{'color' : event.days === '00' ? '#87c82e' : 'white'}\">\n\t\t\t\t{{event.days}}\n\t\t\t</div>\n\t\t\t<div class=\"center-relative-to-parent timer-text-styling\">\n\t\t\t\tDay(s)\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"vl\"></div>\n\t\t<div class=\"timer-width\">\n\t\t\t<div class=\"center-relative-to-parent\" [ngStyle]=\"{'color': event.hours === '00' && event.days === '00' ? '#87c82e' : 'white'}\">\n\t\t\t\t{{event.hours}}\n\t\t\t</div>\n\t\t\t<div class=\"center-relative-to-parent timer-text-styling\">\n\t\t\t\tHour(s)\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"vl\"></div>\n\t\t<div class=\"timer-width\" >\n\t\t\t<div class=\"center-relative-to-parent\" [ngStyle]=\"{'color': event.minutes === '00' && event.hours === '00' ? '#87c82e' : 'white'}\">\n\t\t\t\t{{event.minutes}}\n\t\t\t</div>\n\t\t\t<div class=\"center-relative-to-parent timer-text-styling\">\n\t\t\t\tMinute(s)\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"vl\"></div>\n\t\t<div class=\"timer-width\" >\n\t\t\t<div class=\"center-relative-to-parent\" [ngStyle]=\"{'color': event.seconds === '00' && event.minutes == '00' ? '#87c82e' : 'white'}\">\n\t\t\t\t{{event.seconds}}\n\t\t\t</div>\n\t\t\t<div class=\"center-relative-to-parent timer-text-styling\">\n\t\t\t\tSecond(s)\n\t\t\t</div>\n\t\t</div>\n\t\t</h1>\n\t\t<br>\n\t\t<div class=\"row\" style=\"margin: 0 0 0 0\">\n\t\t\t<div *ngIf=\"event.fLink\" class=\"social-background read-more\">\n\t\t\t\t<a data-toggle=\"collapse\" [attr.data-target]=\"'#main' + i\" class=\"fas fa-ellipsis-v\" style=\"color: rgb(6,160,224);\"></a>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"event.fLink\" class=\"social-background facebook read-more\">\n\t\t\t\t<a href=\"{{event.fLink}}\" target=\"_blank\" class=\"fab fa-facebook\"></a>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"event.gLink\" class=\"social-background google read-more\">\n\t\t\t\t<a href=\"{{event.gLink}}\" target=\"_blank\" class=\"fab fa-google\"></a>\n\t\t\t</div>\n\t\t\t{{collapse}}\n\t\t</div>\n\t\t<br>\n\t\t<div class=\"collapse\" [attr.id]=\"'main' + i\">\n\t\t\t<div class=\"center-relative-to-parent\">\n\t\t\t\t<h5><i class=\"far fa-calendar-alt\"></i> {{event.date}}</h5>\n\t\t\t</div>\n\t\t\t<br>\n\t\t\t<div class=\"center-relative-to-parent\">\n\t\t\t\t<h5><i class=\"fas fa-map-marker-alt\"></i> {{event.location}}</h5>\n\t\t\t</div>\n\t\t\t<br>\n\t\t\t<div class=\"center-relative-to-parent\">\n\t\t\t\t<h5><i class=\"fas fa-user\"></i> {{event.host}}</h5>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -555,7 +623,7 @@ module.exports = "<div class=\"main-container box-shadow\">\n\t<div *ngIf=\"arr.
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".timer-text-size {\n  font-size: 10px;\n}\nh3 {\n  color: white;\n}\nh5 {\n  color: white;\n}\n.title-container {\n  background: #87c82e;\n  height: 40px;\n  margin: 0 -15px 0 -15px;\n}\n.main-container {\n  margin-top: 40px;\n  background-color: rgba(232, 238, 240, 0.05);\n}\n.icon {\n  font-size: xx-large;\n  margin: 0 10px 0 10px;\n}\n"
+module.exports = ".timer-text-styling {\n  font-size: 10px;\n  color: white;\n}\nh3 {\n  color: white;\n}\nh5 {\n  color: white;\n}\n.title-container {\n  background: #87c82e;\n  height: 40px;\n  margin: 0 -15px 0 -15px;\n}\n.main-container {\n  margin-top: 40px;\n  background-color: rgba(232, 238, 240, 0.05);\n}\n.icon {\n  font-size: xx-large;\n  margin: 0 10px 0 10px;\n}\n.timer-width {\n  width: 55px;\n}\n"
 
 /***/ }),
 
@@ -586,6 +654,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var MainQueueComponent = /** @class */ (function () {
     function MainQueueComponent() {
         this.arr = [];
+        this.readyMainQueue = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     MainQueueComponent.prototype.ngOnInit = function () {
         this.queueUpdate();
@@ -597,6 +666,7 @@ var MainQueueComponent = /** @class */ (function () {
     MainQueueComponent.prototype.queueUpdate = function () {
         var _this = this;
         if (this.queue == undefined) {
+            this.readyMainQueue.emit(true);
             return;
         }
         this.arr = this.queue.slice(-this.queue.length, 3);
@@ -617,35 +687,48 @@ var MainQueueComponent = /** @class */ (function () {
         this.arr.map(function (e) { return _this.countdown(e); });
     };
     MainQueueComponent.prototype.countdown = function (obj) {
-        var today = new Date();
         setInterval(function () {
-            var diff = moment__WEBPACK_IMPORTED_MODULE_1__(obj['timer'].diff(moment__WEBPACK_IMPORTED_MODULE_1__(new Date())));
-            if (obj['timer'].isBefore(today)) {
+            // let today = moment();
+            // let diffF = moment(obj['timer'].diff(today)).unix();
+            if (obj['timer'].isBefore(moment__WEBPACK_IMPORTED_MODULE_1__())) {
                 obj['days'] = '00';
                 obj['hours'] = '00';
                 obj['minutes'] = '00';
                 obj['seconds'] = '00';
             }
             else {
-                var days = diff.add('s').format('DDD');
-                days = parseInt(days) > 99 ? days : parseInt(days) === 1 ? '00' : diff.add('s').format('DD');
+                var event = moment__WEBPACK_IMPORTED_MODULE_1__(obj['timer']).unix();
+                var today = moment__WEBPACK_IMPORTED_MODULE_1__().unix();
+                var diffTime = moment__WEBPACK_IMPORTED_MODULE_1__["duration"]((event - today) * 1000, 'milliseconds');
+                var diffDays = moment__WEBPACK_IMPORTED_MODULE_1__(obj['timer'].diff(moment__WEBPACK_IMPORTED_MODULE_1__().startOf('day')));
+                var days = diffDays.add('s').format('DDD');
+                days = parseInt(days) > 11 ? days : diffDays.add('s').format('DD');
+                var hours = moment__WEBPACK_IMPORTED_MODULE_1__["utc"](diffTime.asMilliseconds()).format('HH');
+                var mins = moment__WEBPACK_IMPORTED_MODULE_1__["utc"](diffTime.asMilliseconds()).format('mm');
+                var secs = moment__WEBPACK_IMPORTED_MODULE_1__["utc"](diffTime.asMilliseconds()).format('ss');
                 obj['days'] = days;
-                obj['hours'] = diff.add('s').format('HH');
-                obj['minutes'] = diff.add('s').format('mm');
-                obj['seconds'] = diff.add('s').format('ss');
+                obj['hours'] = hours;
+                obj['minutes'] = mins;
+                obj['seconds'] = secs;
             }
         }, 1000);
+        this.readyMainQueue.emit(true);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], MainQueueComponent.prototype, "queue", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], MainQueueComponent.prototype, "readyMainQueue", void 0);
     MainQueueComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'main-queue',
             template: __webpack_require__(/*! ./main-queue.component.html */ "./src/app/components/main-queue/main-queue.component.html"),
             styles: [__webpack_require__(/*! ./main-queue.component.less */ "./src/app/components/main-queue/main-queue.component.less")]
-        })
+        }),
+        __metadata("design:paramtypes", [])
     ], MainQueueComponent);
     return MainQueueComponent;
 }());
@@ -661,7 +744,7 @@ var MainQueueComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <div class=\"sponsor-container box-shadow\">\n\t<app-title-bar [text]=\"titleText\"></app-title-bar>\n\t<div *ngFor=\"let event of queue | slice: 3; let i = index\">\n\t\t<div class=\"col-12 col-md-12\" style=\"padding: 0 0 0 0; position: absolute;\">\n\t\t\t<div style=\"position: absolute; z-index: 100;\">\t\t\t\t\t\n\t\t\t\t<div class=\"col-md-1\" style=\"padding: 0 0 0 10px;\">\n\t\t\t\t\t<p style=\"margin: 0 0 0 0;\">{{event.date | date:'MMM'}}</p>\n\t\t\t\t\t<p style=\"margin: 0 0 0 0; transform: translateY(-20%);\">{{event.date | date:\"dd\"}}</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"arrow col-11 col-sm-11 col-md-11\">\n\t\t\t</div>\n\t\t\t<div class=\"arrow col-1 col-sm-1 col-md-1\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-10 offset-3 col-sm-10 offset-sm-3 col-md-10 offset-md-3\">\n\t\t\t<p class=\"side-menu-name\">{{event.name}}</p>\n\t\t\t<p class=\"side-menu-info\"><i class=\"fas fa-map-marker-alt\"></i> {{event.location}}</p>\n\t\t\t<p class=\"side-menu-info\"><i class=\"far fa-clock\"></i> {{event.date | date:'HH:mm:ss'}}</p>\n\t\t\t<p (click)=\"onClick(toggle[i])\" class=\"read-more side-menu-info\" data-toggle=\"collapse\" [attr.data-target]=\"'#side' + i + size\"><i class=\"fas fa-ellipsis-v\" style=\"color: rgb(6,160,224)\"></i> Läs mer...</p>\n\t\t\t<div class=\"collapse\" [attr.id]=\"'side' + i + size\">\n\t\t\t\t<p class=\"side-menu-info\"><i class=\"fas fa-user\"></i> {{event.host}}</p>\n\t\t\t\t<div *ngIf=\"event.fLink\" class=\"social-background facebook read-more\">\n\t\t\t\t\t<a href=\"{{event.fLink}}\" target=\"_blank\" class=\"fab fa-facebook\"></a>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"event.gLink\" class=\"social-background google read-more\">\n\t\t\t\t\t<a href=\"{{event.gLink}}\" target=\"_blank\" class=\"fab fa-google\"></a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div style=\"margin: 0 0 10px 0;\"></div>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"sponsor-container box\">\n\t<app-title-bar [text]=\"titleText\"></app-title-bar>\n\t<div *ngFor=\"let event of queue | slice: 3; let i = index\">\n\t\t<div class=\"col-12 col-md-12\" style=\"padding: 0 0 0 0; position: absolute;\">\n\t\t\t<div style=\"position: absolute; z-index: 100;\">\t\t\t\t\t\n\t\t\t\t<div class=\"col-md-1\" style=\"padding: 0 0 0 10px;\">\n\t\t\t\t\t<p style=\"margin: 0 0 0 0;\">{{event.date | date:'MMM'}}</p>\n\t\t\t\t\t<p style=\"margin: 0 0 0 0; transform: translateY(-20%);\">{{event.date | date:\"dd\"}}</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"arrow col-11 col-sm-11 col-md-11\">\n\t\t\t</div>\n\t\t\t<div class=\"arrow col-1 col-sm-1 col-md-1\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-10 offset-3 col-sm-10 offset-sm-3 col-md-10 offset-md-3\">\n\t\t\t<p class=\"side-menu-name\">{{event.name}}</p>\n\t\t\t<p class=\"side-menu-info\"><i class=\"fas fa-map-marker-alt\"></i> {{event.location}}</p>\n\t\t\t<p class=\"side-menu-info\"><i class=\"far fa-clock\"></i> {{event.date | date:'HH:mm:ss'}}</p>\n\t\t\t<p class=\"read-more side-menu-info\" data-toggle=\"collapse\" [attr.data-target]=\"'#side' + i + size\"><i class=\"fas fa-ellipsis-v\" style=\"color: rgb(6,160,224)\"></i> Läs mer...</p>\n\t\t\t<div class=\"collapse\" [attr.id]=\"'side' + i + size\">\n\t\t\t\t<p class=\"side-menu-info\"><i class=\"fas fa-user\"></i> {{event.host}}</p>\n\t\t\t\t<div *ngIf=\"event.fLink\" class=\"social-background facebook read-more\">\n\t\t\t\t\t<a href=\"{{event.fLink}}\" target=\"_blank\" class=\"fab fa-facebook\"></a>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"event.gLink\" class=\"social-background google read-more\">\n\t\t\t\t\t<a href=\"{{event.gLink}}\" target=\"_blank\" class=\"fab fa-google\"></a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div style=\"margin: 0 0 10px 0;\"></div>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
