@@ -1,8 +1,0 @@
-{
-    "/api/*": {
-        "target": "https://temadagar.se/",
-        "secure": false,
-        "changeOrigin": true,
-        "logLevel": "debug"
-    }
-}
